@@ -1,0 +1,113 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+  background: black;
+}
+
+/* Background Video */
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Updated Red Overlay */
+.red-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(139, 0, 0, 0.95); /* Darker red */
+  mix-blend-mode: multiply; /* Apply multiply effect */
+  filter: contrast(1.5); /* Increase contrast */
+  z-index: 1;
+}
+
+/* Centering the overlay videos */
+#video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensure it is above the red overlay */
+}
+
+/* Centering the animated text */
+.animated-text {
+  position: absolute;
+  color: white;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  animation: scramble 1s infinite; /* Quicker animation */
+  white-space: nowrap; /* Ensure text stays on one line */
+  overflow: hidden;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 2; /* Ensure it is above the red overlay */
+}
+
+/* Updated Scrolling Text Animation */
+@keyframes scramble {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.animated-text::after {
+  content: '';
+  display: inline-block;
+  animation: typing 1s steps(10) infinite; /* Letter by letter effect */
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Styling for the header navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin: 0 15px;
+  font-family: 'Courier New', Courier, monospace;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: rgba(139, 0, 0, 0.95); /* Darker red */
+}
